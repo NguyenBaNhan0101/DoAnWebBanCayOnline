@@ -30,9 +30,9 @@
                     </a>
                 </td>
                 <td>@item.CategoryName</td>
-                <td>@Common.FormatNumber(item.Price, 0)</td>
+                <td>@Common.FormatNumber(item.Price, 0)₫</td>
                 <td><input type="number" min="1" class="form-control" id="Quantity_@item.ProductId" value="@item.Quantity"/></td>
-                <th>@Common.FormatNumber(item.TotalPrice, 2)</th>
+                <th>@Common.FormatNumber(item.TotalPrice, 2)₫</th>
                 <td>
                     <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                     <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate">Cập nhật</a>
@@ -42,7 +42,7 @@
         }
         <tr>
             <th colspan="6" class="text-right">Tổng: </th>
-            <th class="text-center">@Common.FormatNumber(tongtien, 0)</th>
+            <th class="text-center">@Common.FormatNumber(tongtien, 0)₫</th>
             <th></th>
         </tr>
 

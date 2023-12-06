@@ -44,6 +44,21 @@
                 <div class="products_iso">
                     <div class="row">
                         <div class="col">
+                            <div class="row">
+                                <div class="col-7">
+                                    @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { }))
+                                    {
+                                        <div class="input-group input-group-sm">
+                                            @Html.TextBox("Searchtext", null, new { @class = "form-control" })
+                                            @*<input type="text" name="searchtext" class="form-control">*@
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                                            </span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <br />
                             <!-- Product Sorting -->
                             <div class="product_sorting_container product_sorting_container_top">
                                 <ul class="product_sorting">
@@ -97,14 +112,12 @@
                                             <div class="product discount product_filter">
                                                 <div class="product_image">
                                                     <a href="/chi-tiet/@item.Alias-p@(item.Id)"><img src="@strImge" alt="@item.Title" height="230dp"></a>
-                                                    
                                                 </div>
                                                 <div class="favorite favorite_left"></div>
                                                 @if (item.PriceSale > 250000)
                                                 {
                                                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                                                 }
-                                                @* <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>*@
                                                 <div class="product_info">
                                                     <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
                                                     @if (item.PriceSale > 250000)

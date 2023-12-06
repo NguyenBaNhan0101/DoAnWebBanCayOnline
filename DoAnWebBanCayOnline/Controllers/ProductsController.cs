@@ -1,9 +1,13 @@
 ﻿using DoAnWebBanCayOnline.Models;
+using DoAnWebBanCayOnline.Models.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace DoAnWebBanCayOnline.Controllers
 {
@@ -11,11 +15,16 @@ namespace DoAnWebBanCayOnline.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string Searchtext)
         {
-            var items = db.Products.ToList();
-
+            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id).ToList();
+            if (!string.IsNullOrEmpty(Searchtext))
+            {
+                items = items.Where(x => x.Alias.Contains(Searchtext) || x.Title.Contains(Searchtext));
+            }
             return View(items);
+            //var items = db.Products.ToList();
+            //return View(items);
         }
 
         public ActionResult Detail(string alias, int id)

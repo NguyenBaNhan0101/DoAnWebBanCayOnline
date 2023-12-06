@@ -35,6 +35,7 @@
         //debugger;
         if (conf == true) {
             DeleteAll();
+            location.reload();
         }
 
     });

@@ -13,11 +13,17 @@ namespace DoAnWebBanCayOnline
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-              name: "Contact",
-              url: "lien-he",
-              defaults: new { controller = "Contact", action = "Index", alias = UrlParameter.Optional },
-              namespaces: new[] { "WebBanHangOnline.Controllers" }
-          );
+            name: "Contact",
+            url: "lien-he",
+            defaults: new { controller = "Contact", action = "Index", alias = UrlParameter.Optional },
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+         );
+             routes.MapRoute(
+             name: "CheckOut",
+             url: "thanh-toan",
+             defaults: new { controller = "ShoppingCart", action = "CheckOut", alias = UrlParameter.Optional },
+             namespaces: new[] { "DoAnWebBanCayOnline.Controllers" }
+         );
             routes.MapRoute(
              name: "ShoppingCart",
              url: "gio-hang",
@@ -48,12 +54,7 @@ namespace DoAnWebBanCayOnline
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "DoAnWebBanCayOnline.Controllers" }
             );
-            //         routes.MapRoute(
-            //      name: "CheckOut",
-            //      url: "thanh-toan",
-            //      defaults: new { controller = "ShoppingCart", action = "CheckOut", alias = UrlParameter.Optional },
-            //      namespaces: new[] { "DoAnWebBanCayOnline.Controllers" }
-            //  );
+
             //         routes.MapRoute(
             //    name: "vnpay_return",
             //    url: "vnpay_return",
