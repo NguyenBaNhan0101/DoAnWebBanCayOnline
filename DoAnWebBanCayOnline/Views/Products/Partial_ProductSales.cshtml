@@ -28,7 +28,9 @@
                                     <div class="product-item @item.ProductCategory.Alias">
                                         <div class="product discount product_filter">
                                             <div class="product_image">
-                                                <img src="@strImge" alt="@item.Title"  height="230dp">
+                                                <a href="/chi-tiet/@item.Alias-p@(item.Id)">
+                                                    <img src="@strImge" alt="@item.Title" height="230dp">
+                                                </a>
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             @if (item.PriceSale > 250000)
