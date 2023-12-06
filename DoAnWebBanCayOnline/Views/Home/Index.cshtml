@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "Shop Bán Cây Online";
+    ViewBag.SeoDescription = "Shop Bán Cây Online";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
+<!-- Slider -->
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="main_slider" style="background-image: url(Content/assets/images/R.jpg) ">
+                <div class="container fill_height">
+                    <div class="row align-items-center fill_height">
+                        <div class="col">
+                            <div class="main_slider_content">
+                                <h1 style="color: orange ">Get up to 20% Off New Arrivals</h1>
+                                <div class="red_button shop_now_button"><a href="/san-pham" style="background-color:forestgreen">shop now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="main_slider" style="background-image: url(Content/assets/images/bannertree5.jpg)">
+                <div class="container fill_height">
+                    <div class="row align-items-center fill_height">
+                        <div class="col">
+                            <div class="main_slider_content">
+                                <h1 style="color: orange ">Get up to 20% Off New Arrivals</h1>
+                                <div class="red_button shop_now_button"><a href="/san-pham" style="background-color:forestgreen">shop now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="main_slider" style="background-image: url(Content/assets/images/bannertree2.jpg) ">
+                <div class="container fill_height">
+                    <div class="row align-items-center fill_height">
+                        <div class="col">
+                            <div class="main_slider_content">
+                                <h1 style="color: orange ">Get up to 20% Off New Arrivals</h1>
+                                <div class="red_button shop_now_button"><a href="/san-pham" style="background-color:forestgreen">shop now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+</div>
+@*<div class="main_slider" style="background-image: url(Content/assets/images/R.jpg) ">
+    <div class="container fill_height">
+        <div class="row align-items-center fill_height">
+            <div class="col">
+                <div class="main_slider_content">
+                    <h1 style="color: orange ">Get up to 20% Off New Arrivals</h1>
+                    <div class="red_button shop_now_button"><a href="#" style="background-color:forestgreen">shop now</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<!-- Banner -->
+@Html.Action("MenuProductCategory", "Menu")
+
+<!-- New Arrivals -->
+
+<div class="new_arrivals">
+    <div class="container">
+        @Html.Action("MenuArrivals", "Menu")
+    </div>
+</div>
+
+
+<!--Best Sellers -->
+@Html.Action("Partial_ProductSales", "Products")
+
+<div class="benefit">
+    <div class="container">
+        <div class="row benefit_row">
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true" style="color:forestgreen"></i></div>
+                    <div class="benefit_content">
+                        <h6>free shipping</h6>
+                        <p>Suffered Alteration in Some Form</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true" style="color:forestgreen"></i></div>
+                    <div class="benefit_content">
+                        <h6>cach on delivery</h6>
+                        <p>The Internet Tend To Repeat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true" style="color:forestgreen"></i></div>
+                    <div class="benefit_content">
+                        <h6>45 days return</h6>
+                        <p>Making it Look Like Readable</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true" style="color:forestgreen"></i></div>
+                    <div class="benefit_content">
+                        <h6>opening all week</h6>
+                        <p>8AM - 09PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
