@@ -43,6 +43,7 @@ namespace DoAnWebBanCayOnline.Controllers
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
                 if (cart != null)
                 {
+
                     Order order = new Order();
                     order.CustomerName = req.CustomerName;
                     order.Phone = req.Phone;
@@ -65,31 +66,37 @@ namespace DoAnWebBanCayOnline.Controllers
                     //order.E = req.CustomerName;
                     db.Orders.Add(order);
                     db.SaveChanges();
+                    foreach(var item in cart.Items)
+                    {
+                        Product product = db.Products.SingleOrDefault(x => x.Id == item.ProductId);
+                        product.Quantity -= item.Quantity;
+                    }
+                    db.SaveChanges();
                     //send mail cho khachs hang
-                    //var strSanPham = "";
-                    //var thanhtien = decimal.Zero;
-                    //var TongTien = decimal.Zero;
-                    //foreach (var sp in cart.Items)
-                    //{
-                    //    strSanPham += "<tr>";
-                    //    strSanPham += "<td>" + sp.ProductName + "</td>";
-                    //    strSanPham += "<td>" + sp.Quantity + "</td>";
-                    //    strSanPham += "<td>" + DoAnWebBanCayOnline.Common.Common.FormatNumber(sp.TotalPrice, 0) + "</td>";
-                    //    strSanPham += "</tr>";
-                    //    thanhtien += sp.Price * sp.Quantity;
-                    //}
-                    //TongTien = thanhtien;
-                    //string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send2.html"));
-                    //contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Code);
-                    //contentCustomer = contentCustomer.Replace("{{SanPham}}", strSanPham);
-                    //contentCustomer = contentCustomer.Replace("{{NgayDat}}", DateTime.Now.ToString("dd/MM/yyyy"));
-                    //contentCustomer = contentCustomer.Replace("{{TenKhachHang}}", order.CustomerName);
-                    //contentCustomer = contentCustomer.Replace("{{Phone}}", order.Phone);
-                    //contentCustomer = contentCustomer.Replace("{{Email}}", req.Email);
-                    //contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
-                    //contentCustomer = contentCustomer.Replace("{{ThanhTien}}", DoAnWebBanCayOnline.Common.Common.FormatNumber(thanhtien, 0));
-                    //contentCustomer = contentCustomer.Replace("{{TongTien}}", DoAnWebBanCayOnline.Common.Common.FormatNumber(TongTien, 0));
-                    //DoAnWebBanCayOnline.Common.Common.SendMail("ShopOnline", "Đơn hàng #" + order.Code, contentCustomer.ToString(), req.Email);
+                    var strSanPham = "";
+                    var thanhtien = decimal.Zero;
+                    var TongTien = decimal.Zero;
+                    foreach (var sp in cart.Items)
+                    {
+                        strSanPham += "<tr>";
+                        strSanPham += "<td>" + sp.ProductName + "</td>";
+                        strSanPham += "<td>" + sp.Quantity + "</td>";
+                        strSanPham += "<td>" + DoAnWebBanCayOnline.Common.Common.FormatNumber(sp.TotalPrice, 0) + "</td>";
+                        strSanPham += "</tr>";
+                        thanhtien += sp.Price * sp.Quantity;
+                    }
+                    TongTien = thanhtien;
+                    string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send2.html"));
+                    contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Code);
+                    contentCustomer = contentCustomer.Replace("{{SanPham}}", strSanPham);
+                    contentCustomer = contentCustomer.Replace("{{NgayDat}}", DateTime.Now.ToString("dd/MM/yyyy"));
+                    contentCustomer = contentCustomer.Replace("{{TenKhachHang}}", order.CustomerName);
+                    contentCustomer = contentCustomer.Replace("{{Phone}}", order.Phone);
+                    contentCustomer = contentCustomer.Replace("{{Email}}", req.Email);
+                    contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
+                    contentCustomer = contentCustomer.Replace("{{ThanhTien}}", DoAnWebBanCayOnline.Common.Common.FormatNumber(thanhtien, 0));
+                    contentCustomer = contentCustomer.Replace("{{TongTien}}", DoAnWebBanCayOnline.Common.Common.FormatNumber(TongTien, 0));
+                    DoAnWebBanCayOnline.Common.Common.SendMail("Shop Cây Online", "Đơn hàng #" + order.Code, contentCustomer.ToString(), req.Email);
 
                     //string contentAdmin = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send1.html"));
                     //contentAdmin = contentAdmin.Replace("{{MaDon}}", order.Code);
@@ -101,17 +108,15 @@ namespace DoAnWebBanCayOnline.Controllers
                     //contentAdmin = contentAdmin.Replace("{{DiaChiNhanHang}}", order.Address);
                     //contentAdmin = contentAdmin.Replace("{{ThanhTien}}", DoAnWebBanCayOnline.Common.Common.FormatNumber(thanhtien, 0));
                     //contentAdmin = contentAdmin.Replace("{{TongTien}}", DoAnWebBanCayOnline.Common.Common.FormatNumber(TongTien, 0));
-                    //DoAnWebBanCayOnline.Common.Common.SendMail("ShopOnline", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
-                    //cart.ClearCart();
+                    //DoAnWebBanCayOnline.Common.Common.SendMail("Shop Cây Online", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
+                    cart.ClearCart();
                     //code = new { Success = true, Code = req.TypePayment, Url = "" };
-                    ////var url = "";
+                    //var url = "";
                     //if (req.TypePayment == 2)
                     //{
                     //    var url = UrlPayment(req.TypePaymentVN, order.Code);
                     //    code = new { Success = true, Code = req.TypePayment, Url = url };
                     //}
-
-                    //code = new { Success = true, Code = 1, Url = url };
                     return RedirectToAction("CheckOutSuccess");
                 }
             }
