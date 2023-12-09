@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace DoAnWebBanCayOnline.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();

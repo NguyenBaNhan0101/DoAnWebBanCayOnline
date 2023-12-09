@@ -4,14 +4,14 @@
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            @*@if (User.IsInRole("admin"))
+            @if (User.IsInRole("Admin"))
             {
                 <img src="~/Content/client/dist/img/admincat.jpg" class="img-circle elevation-2" alt="Admin Image">
             }
             else if (User.IsInRole("Employee"))
-            {*@
+            {
                 <img src="~/Content/client/dist/img/bearemployee.jpg" class="img-circle elevation-2" alt="Employee Image">
-            @*}*@
+            }
         </div>
         <div class="info">
             <a href="#" class="d-block">@User.Identity.GetUserName()</a>
@@ -35,8 +35,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
-            @*@if (User.IsInRole("admin"))
-        {*@
+            @if (User.IsInRole("Admin"))
+            {
             <li class="nav-item">
                 <a href="/admin/Category" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -45,7 +45,7 @@
                     </p>
                 </a>
             </li>
-            @*}*@
+            }
             @*<li class="nav-item">
                 <a href="/admin/news" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
@@ -72,13 +72,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/admin/productscategory/index" class="nav-link">
+                        <a href="/admin/productscategory" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Danh mục sản phẩm</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/products/index" class="nav-link">
+                        <a href="/admin/products" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Sản phẩm</p>
                         </a>
@@ -86,15 +86,15 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="/admin/order/index" class="nav-link">
+                <a href="/admin/order" class="nav-link">
                     <i class="nav-icon fas fa-box-open"></i>
                     <p>
                         Đơn hàng
                     </p>
                 </a>
             </li>
-            @*@if (User.IsInRole("admin"))
-        {*@
+            @if (User.IsInRole("Admin"))
+            {
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-user-edit"></i>
@@ -105,13 +105,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/admin/account" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Tài khoản</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/admin/role" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Quyền</p>
                         </a>
@@ -119,14 +119,14 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/settingsystem" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Cấu hình hệ thống
                     </p>
                 </a>
             </li>
-            @*}*@
+            }
             <li class="nav-item">
                 <a href="javascript:document.getElementById('logOffForm').submit()" class="nav-link">
                     <i class="nav-icon fas fa-arrow-alt-circle-left"></i>

@@ -13,7 +13,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/order/index" class="nav-link">Danh sách đơn hàng</a>
+            <a href="/admin/order" class="nav-link">Danh sách đơn hàng</a>
         </li>
     </ul>
 }
@@ -38,6 +38,20 @@
             <h3 class="card-title">Danh sách đơn hàng</h3>
         </div>
         <div class="card-body">
+            @*<div class="row">
+                <div class="col-3">
+                    @using (Html.BeginForm("Index", "Order", FormMethod.Get, new { }))
+                    {
+                        <div class="input-group input-group-sm">
+                            @Html.TextBox("Searchtext", null, new { @class = "form-control" })
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                            </span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <br />*@
             <table class="table table-bordered">
                 <thead>
                     <tr>

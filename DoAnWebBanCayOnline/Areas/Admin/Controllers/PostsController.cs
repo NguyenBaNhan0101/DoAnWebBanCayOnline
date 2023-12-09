@@ -10,6 +10,7 @@ using System.Web.UI;
 
 namespace DoAnWebBanCayOnline.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, Employee")]
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
