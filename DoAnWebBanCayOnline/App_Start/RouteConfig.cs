@@ -37,6 +37,12 @@ namespace DoAnWebBanCayOnline
              namespaces: new[] { "DoAnWebBanCayOnline.Controllers" }
          );
             routes.MapRoute(
+            name: "BaiViet",
+            url: "post/{alias}",
+            defaults: new { controller = "Article", action = "Index", alias = UrlParameter.Optional },
+            namespaces: new[] { "DoAnWebBanCayOnline.Controllers" }
+        );
+            routes.MapRoute(
               name: "detailProduct",
               url: "chi-tiet/{alias}-p{id}",
               defaults: new { controller = "Products", action = "Detail", alias = UrlParameter.Optional },
