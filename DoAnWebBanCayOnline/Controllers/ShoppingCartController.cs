@@ -62,7 +62,8 @@ namespace DoAnWebBanCayOnline.Controllers
                             db.Entry(itemOrder).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
-                        //Thanh toan thanh cong
+                        //Thanh toan thanh cong.
+                        ViewBag.ThanhToanThanhCong = "Số tiền thanh toán (VND):" + vnp_Amount.ToString();
                         ViewBag.InnerText = "Giao dịch được thực hiện thành công. Cảm ơn quý khách đã sử dụng dịch vụ";
                         //log.InfoFormat("Thanh toan thanh cong, OrderId={0}, VNPAY TranId={1}", orderId, vnpayTranId);
                     }
@@ -75,11 +76,9 @@ namespace DoAnWebBanCayOnline.Controllers
                     //displayTmnCode.InnerText = "Mã Website (Terminal ID):" + TerminalID;
                     //displayTxnRef.InnerText = "Mã giao dịch thanh toán:" + orderId.ToString();
                     //displayVnpayTranNo.InnerText = "Mã giao dịch tại VNPAY:" + vnpayTranId.ToString();
-                    ViewBag.ThanhToanThanhCong = "Số tiền thanh toán (VND):" + vnp_Amount.ToString();
                     //displayBankCode.InnerText = "Ngân hàng thanh toán:" + bankCode;
                 }
             }
-            //var a = UrlPayment(0, "DH3574");
             return View();
         }
 
