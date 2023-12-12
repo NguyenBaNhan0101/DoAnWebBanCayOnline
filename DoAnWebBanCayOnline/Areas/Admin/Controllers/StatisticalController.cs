@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace DoAnWebBanCayOnline.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin,Employee")]
     public class StatisticalController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

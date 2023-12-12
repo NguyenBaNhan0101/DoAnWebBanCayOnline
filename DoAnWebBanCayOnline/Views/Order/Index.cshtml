@@ -1,0 +1,109 @@
+﻿@model PagedList.IPagedList<DoAnWebBanCayOnline.Models.EF.Order>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Lịch sử mua hàng";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
+
+<div class="container product_section_container">
+    <div class="row">
+        <div class="col product_section clearfix">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="~/Home">Trang chủ</a></li>
+                    <li class="active"><a href="/order/index"><i class="fa fa-angle-right" aria-hidden="true"></i>Lịch sử mua hàng</a></li>
+                </ul>
+            </div>
+            <!-- Main Content -->
+            <div class="main_content">
+                <!-- Products -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh sách đơn hàng</h3>
+                    </div>
+                    <div class="card-body">
+                        @*<div class="row">
+                                <div class="col-3">
+                                    @using (Html.BeginForm("Index", "Order", FormMethod.Get, new { }))
+                                    {
+                                        <div class="input-group input-group-sm">
+                                            @Html.TextBox("Searchtext", null, new { @class = "form-control" })
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                                            </span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <br />*@
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Tên Khách hàng</th>
+                                    <th>Phone</th>
+                                    <th>Tiền</th>
+                                    <th>Phương thức thanh toán</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày tạo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.Code</td>
+                                            <td>@item.CustomerName</td>
+                                            <td>@item.Phone</td>
+                                            <td>@DoAnWebBanCayOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                                            <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
+                                            @if (@item.Status == 2)
+                                            {
+                                                <td>Shop đang chuẩn bị hàng!</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Shop đang xác nhận đơn hàng!</td>
+                                            }
+                                            <td>
+                                                @item.Status
+                                            </td>
+                                            <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                            <td>
+                                                <a href="/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-6"></div>
+                            <div class="col-6" style="text-align:right;">
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+
+                    </div>
+                    <!-- /.card-footer-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
