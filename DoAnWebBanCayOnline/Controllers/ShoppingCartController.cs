@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace DoAnWebBanCayOnline.Controllers
 {
+    [Authorize(Roles = "Admin,Employee,Customer")]
     public class ShoppingCartController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -116,6 +117,7 @@ namespace DoAnWebBanCayOnline.Controllers
                         Quantity = x.Quantity,
                         Price = x.Price
                     }));
+                    order.Quantity = cart.Items.Count(x => x.Quantity>0);
                     order.TotalAmount = cart.Items.Sum(x => (x.Price * x.Quantity));
                     order.TypePayment = req.TypePayment;
                     order.CreatedDate = DateTime.Now;
