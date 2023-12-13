@@ -53,6 +53,32 @@ namespace DoAnWebBanCayOnline.Controllers
             }
         }
 
+        public async Task<ActionResult> Profile()
+        {
+            var user = await UserManager.FindByNameAsync(User.Identity.Name);
+            var item = new CreateAccountViewModel();
+            item.UserName = user.UserName;
+            item.Phone = user.Phone;
+            item.FullName = user.FullName;
+            item.Email = user.Email;
+            return View(item);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PostProfile(CreateAccountViewModel req)
+        {
+            var user = await _userManager.FindByEmailAsync(req.Email);
+            user.FullName = req.FullName;
+            user.Phone = req.Phone;
+            var rs = await UserManager.UpdateAsync(user);
+            if (rs.Succeeded)
+            {
+                RedirectToAction("Profile");
+            }
+            return View(req);
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

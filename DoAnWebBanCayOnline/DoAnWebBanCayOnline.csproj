@@ -3572,6 +3572,7 @@
     <Content Include="Views\Order\View.cshtml" />
     <Content Include="Views\Order\Partial_SanPham.cshtml" />
     <Content Include="Views\ShoppingCart\VnpayReturn.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
