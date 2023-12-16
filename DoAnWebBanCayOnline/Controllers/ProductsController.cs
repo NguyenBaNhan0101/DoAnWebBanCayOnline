@@ -37,7 +37,8 @@ namespace DoAnWebBanCayOnline.Controllers
                 db.Entry(item).Property(x => x.ViewCount).IsModified = true;
                 db.SaveChanges();
             }
-
+            var countReview = db.Reviews.Where(x => x.ProductId == id).Count();
+            ViewBag.CountReview = countReview;
             return View(item);
         }
         public ActionResult ProductCategory(string alias, int id)

@@ -17,7 +17,7 @@ namespace DoAnWebBanCayOnline.Controllers
         public ActionResult Index(int? page)
         {
             var items = db.Orders.OrderByDescending(x => x.CreatedDate).ToList();
-
+            //var items = from tt in db.Orders where tt.UserName == User.Identity.Name select tt;
             if (page == null)
             {
                 page = 1;

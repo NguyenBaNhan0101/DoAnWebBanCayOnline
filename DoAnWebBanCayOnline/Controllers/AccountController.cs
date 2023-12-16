@@ -57,9 +57,9 @@ namespace DoAnWebBanCayOnline.Controllers
         {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             var item = new CreateAccountViewModel();
+            item.FullName = user.FullName;
             item.UserName = user.UserName;
             item.Phone = user.Phone;
-            item.FullName = user.FullName;
             item.Email = user.Email;
             return View(item);
         }
@@ -68,13 +68,13 @@ namespace DoAnWebBanCayOnline.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> PostProfile(CreateAccountViewModel req)
         {
-            var user = await _userManager.FindByEmailAsync(req.Email);
+            var user = await UserManager.FindByEmailAsync(req.Email);
             user.FullName = req.FullName;
-            user.Phone = req.Phone;
+            user.PhoneNumber = req.Phone;
             var rs = await UserManager.UpdateAsync(user);
             if (rs.Succeeded)
             {
-                RedirectToAction("Profile");
+                return RedirectToAction("Profile");
             }
             return View(req);
         }

@@ -1,6 +1,7 @@
 ﻿using DoAnWebBanCayOnline.Models;
 using DoAnWebBanCayOnline.Models.EF;
 using DoAnWebBanCayOnline.Models.Payments;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace DoAnWebBanCayOnline.Controllers
 {
-    [Authorize(Roles = "Admin,Employee,Customer")]
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -123,6 +124,8 @@ namespace DoAnWebBanCayOnline.Controllers
                     order.CreatedDate = DateTime.Now;
                     order.ModifiedDate = DateTime.Now;
                     order.CreatedBy = req.Phone;
+                    if(User.Identity.IsAuthenticated)
+                        order.CustomerID = User.Identity.GetUserId();
                     Random rd = new Random();
                     order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
                     //order.E = req.CustomerName;

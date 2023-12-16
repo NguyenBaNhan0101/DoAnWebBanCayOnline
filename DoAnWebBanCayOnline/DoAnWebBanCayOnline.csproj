@@ -203,6 +203,7 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,10 +216,23 @@
     <Compile Include="Migrations\202312070921222_CreateTBThongKe.designer.cs">
       <DependentUpon>202312070921222_CreateTBThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312141447574_InsertCustomerIDOrder.cs" />
+    <Compile Include="Migrations\202312141447574_InsertCustomerIDOrder.designer.cs">
+      <DependentUpon>202312141447574_InsertCustomerIDOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312141527458_Review.cs" />
+    <Compile Include="Migrations\202312141527458_Review.designer.cs">
+      <DependentUpon>202312141527458_Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312141532171_Table_Review_edit_ForeignKey.cs" />
+    <Compile Include="Migrations\202312141532171_Table_Review_edit_ForeignKey.designer.cs">
+      <DependentUpon>202312141532171_Table_Review_edit_ForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\ThongKeTruyCap.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
+    <Compile Include="Models\EF\ReviewProduct.cs" />
     <Compile Include="Models\EF\ThongKe.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Payments\VnPayLibrary.cs" />
@@ -3573,6 +3587,8 @@
     <Content Include="Views\Order\Partial_SanPham.cshtml" />
     <Content Include="Views\ShoppingCart\VnpayReturn.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Review\_Review.cshtml" />
+    <Content Include="Views\Review\_Load_Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3598,6 +3614,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312070921222_CreateTBThongKe.resx">
       <DependentUpon>202312070921222_CreateTBThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312141447574_InsertCustomerIDOrder.resx">
+      <DependentUpon>202312141447574_InsertCustomerIDOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312141527458_Review.resx">
+      <DependentUpon>202312141527458_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312141532171_Table_Review_edit_ForeignKey.resx">
+      <DependentUpon>202312141532171_Table_Review_edit_ForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
