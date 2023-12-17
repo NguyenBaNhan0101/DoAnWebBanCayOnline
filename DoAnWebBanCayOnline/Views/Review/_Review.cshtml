@@ -32,7 +32,7 @@
             @Html.TextBoxFor(x => x.Email, new { @class = "form_input input_email", @placeholder = "Email", @id = "review-email" })
             @Html.HiddenFor(x => x.UserName)
             @Html.HiddenFor(x => x.ProductId, new { @Value = ViewBag.ProductId })
-            <input type="text" id="txtRate" name="Rate" value="4" @*style="visibility:hidden;"*@ />
+            <input type="text" id="txtRate" name="Rate" value="4" style="visibility:hidden;" />
         </div>
         <div>
             <h1>Your Rating:</h1>

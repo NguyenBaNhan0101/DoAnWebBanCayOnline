@@ -16,17 +16,17 @@ namespace DoAnWebBanCayOnline.Controllers
         // GET: Order
         public ActionResult Index(int? page)
         {
-            var items = db.Orders.OrderByDescending(x => x.CreatedDate).ToList();
-            //var items = from tt in db.Orders where tt.UserName == User.Identity.Name select tt;
-            if (page == null)
-            {
-                page = 1;
-            }
-            var pageNumber = page ?? 1;
-            var pageSize = 10;
-            ViewBag.PageSize = pageSize;
-            ViewBag.Page = pageNumber;
-            return View(items.ToPagedList(pageNumber, pageSize));
+            //var items = db.Orders.OrderByDescending(x => x.CreatedDate).ToList();
+            var items = from tt in db.Orders where tt.UserName == User.Identity.Name select tt;
+            //if (page == null)
+            //{
+            //    page = 1;
+            //}
+            //var pageNumber = page ?? 1;
+            //var pageSize = 10;
+            //ViewBag.PageSize = pageSize;
+            //ViewBag.Page = pageNumber;
+            return View(items);
         }
 
         public ActionResult View(int id)

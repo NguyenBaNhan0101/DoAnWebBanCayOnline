@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202312141532171_Table_Review_edit_ForeignKey.designer.cs">
       <DependentUpon>202312141532171_Table_Review_edit_ForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312170706326_insert_username_in_order.cs" />
+    <Compile Include="Migrations\202312170706326_insert_username_in_order.designer.cs">
+      <DependentUpon>202312170706326_insert_username_in_order.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\ThongKeTruyCap.cs" />
@@ -3513,6 +3517,7 @@
     <Content Include="Areas\Admin\Views\SettingSystem\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SettingSystem\Partial_Setting.cshtml" />
     <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3623,6 +3628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312141532171_Table_Review_edit_ForeignKey.resx">
       <DependentUpon>202312141532171_Table_Review_edit_ForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312170706326_insert_username_in_order.resx">
+      <DependentUpon>202312170706326_insert_username_in_order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using DoAnWebBanCayOnline.Models;
+using DoAnWebBanCayOnline.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -43,7 +44,6 @@ namespace DoAnWebBanCayOnline.Areas.Admin.Controllers
                 DateTime endDate = DateTime.ParseExact(toDate, "dd/MM/yyyy", null);
                 query = query.Where(x => x.CreatedDate < endDate);
             }
-
             var result = query.GroupBy(x => DbFunctions.TruncateTime(x.CreatedDate)).Select(x => new
             {
                 Date = x.Key.Value,

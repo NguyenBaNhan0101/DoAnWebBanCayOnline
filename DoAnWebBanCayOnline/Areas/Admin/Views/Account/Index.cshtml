@@ -63,19 +63,19 @@
                         var i = 1;
                         foreach (var item in Model)
                         {
-                            <tr>
+                            <tr id="trow_@item.Id">
                                 <td>@i</td>
                                 <td>@item.UserName</td>
                                 <td>@item.FullName</td>
                                 <td>@item.Email</td>
                                 <td>@item.Phone</td>
                                 <td>
-                                    @*<a href="/admin/Account/Edit/@item.UserName" class="btn btn-sm btn-primary">Sửa</a>*@
+                                    <a href="/admin/account/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <a href="#" data-user="@item.UserName" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
                             i++;
                         }
-
                     }
                 </tbody>
             </table>
@@ -90,3 +90,28 @@
 
 </section>
 <!-- /.content -->
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.btnDelete').click(function () {
+                var user = $(this).data('user');
+                var id = $(this).data('id');
+                var conf = confirm('Bạn có muốn xóa tài khoản này hay không?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/admin/account/DeleteAccount',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (res) {
+                            if (res.success) {
+                                $('#trow_' + id).remove();
+                            }
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

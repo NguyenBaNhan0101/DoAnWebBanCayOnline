@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<DoAnWebBanCayOnline.Models.EF.Order>
+﻿@model IEnumerable<DoAnWebBanCayOnline.Models.EF.Order>
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Lịch sử mua hàng";
@@ -56,11 +56,11 @@
                             <tbody>
                                 @if (Model != null && Model.Any())
                                 {
-                                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                                    //var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                                     foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@i</td>
+                                            @*<td>@i</td>*@
                                             <td>@item.Code</td>
                                             <td>@item.CustomerName</td>
                                             <td>@item.Phone</td>
@@ -68,11 +68,19 @@
                                             <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
                                             @if (@item.Status == 2)
                                             {
-                                                <td>Shop đang chuẩn bị hàng!</td>
+                                                <td>Shop đang chuẩn bị hàng</td>
                                             }
-                                            else
+                                            @if (@item.Status == 1)
                                             {
-                                                <td>Shop đang xác nhận đơn hàng!</td>
+                                                <td>Shop đang xác nhận đơn hàng</td>
+                                            }
+                                            @if (@item.Status == 3)
+                                            {
+                                                <td>Đơn hàng đã được giao thành công</td>
+                                            }
+                                            @if (@item.Status == 4)
+                                            {
+                                                <td>Đã hủy</td>
                                             }
                                             <td>
                                                 @item.Status
@@ -82,18 +90,18 @@
                                                 <a href="/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
                                             </td>
                                         </tr>
-                                        i++;
+                                        //i++;
                                     }
                                 }
                             </tbody>
                         </table>
 
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-6"></div>
                             <div class="col-6" style="text-align:right;">
                                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">

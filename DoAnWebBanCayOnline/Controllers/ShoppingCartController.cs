@@ -124,8 +124,11 @@ namespace DoAnWebBanCayOnline.Controllers
                     order.CreatedDate = DateTime.Now;
                     order.ModifiedDate = DateTime.Now;
                     order.CreatedBy = req.Phone;
-                    if(User.Identity.IsAuthenticated)
+                    if (User.Identity.IsAuthenticated)
+                    {
                         order.CustomerID = User.Identity.GetUserId();
+                        order.UserName = User.Identity.Name;
+                    }
                     Random rd = new Random();
                     order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
                     //order.E = req.CustomerName;

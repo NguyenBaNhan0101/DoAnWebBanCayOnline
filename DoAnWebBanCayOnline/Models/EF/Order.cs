@@ -30,6 +30,7 @@ namespace DoAnWebBanCayOnline.Models.EF
         public int Quantity { get; set; }
         public int TypePayment { get; set; }
         public string CustomerID { get; set; }
+        public string UserName { get; set; }
         public int Status { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
