@@ -3594,6 +3594,7 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Review\_Review.cshtml" />
     <Content Include="Views\Review\_Load_Review.cshtml" />
+    <Content Include="Views\Shared\_LayoutForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
