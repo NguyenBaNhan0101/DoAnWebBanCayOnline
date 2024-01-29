@@ -54,3 +54,43 @@
         </tr>
     }
 </table>
+
+<script>
+        function validateQuantity(productId) {
+            // Lấy đối tượng input số dựa vào productId
+            var inputElement = document.getElementById("Quantity_" + productId);
+            // Lấy giá trị hiện tại của input
+            var currentQuantity = parseInt(inputElement.value);
+            // Lấy giá trị tối đa cho phép (lấy từ thuộc tính data-inventory)
+            var maxQuantity = parseInt(inputElement.getAttribute("data-id"));
+
+            // Kiểm tra nếu số lượng hiện tại lớn hơn số lượng tối đa
+            if (currentQuantity > maxQuantity) {
+                // Nếu lớn hơn, đặt giá trị của input là giá trị tối đa
+                inputElement.value = maxQuantity;
+            }
+
+            // Lấy đối tượng nút "Cập nhật" dựa vào productId
+            var updateButton = document.getElementById("Update_" + productId);
+
+            // Kiểm tra nếu số lượng hiện tại là 0
+            if (currentQuantity === 0) {
+                // Nếu là 0, vô hiệu hóa nút "Cập nhật"
+                updateButton.disabled = true;
+            } else {
+                // Ngược lại, kích hoạt nút "Cập nhật"
+                updateButton.disabled = false;
+            }
+        }
+
+        // Gắn sự kiện onchange cho tất cả các input số
+        var quantityInputs = document.querySelectorAll('input[type="number"]');
+        quantityInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                // Lấy productId từ id của input
+                var productId = input.id.split('_')[1];
+                // Gọi hàm kiểm tra số lượng
+                validateQuantity(productId);
+            });
+        });
+</script>

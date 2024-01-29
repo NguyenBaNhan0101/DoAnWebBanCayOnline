@@ -1,9 +1,40 @@
 ﻿@model IEnumerable<DoAnWebBanCayOnline.Models.EF.ProductImage>
 @{
     ViewBag.Title = "Ảnh sản phảm";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutEmpty.cshtml";
+    //Layout = "~/Areas/Admin/Views/Shared/_LayoutEmpty.cshtml";
 
 }
+
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">-->
+<!-- Font Awesome -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/fontawesome-free/css/all.min.css">-->
+<!-- daterange picker -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/daterangepicker/daterangepicker.css">-->
+<!-- iCheck for checkboxes and radio inputs -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
+<!-- Bootstrap Color Picker -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">-->
+<!-- Tempusdominus Bootstrap 4 -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">-->
+<!-- Select2 -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/Content/clients/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">-->
+<!-- Bootstrap4 Duallistbox -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">-->
+<!-- BS Stepper -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/bs-stepper/css/bs-stepper.min.css">-->
+<!-- dropzonejs -->
+<!--<link rel="stylesheet" href="~/Content/clients/plugins/dropzone/min/dropzone.min.css">-->
+<!-- Theme style -->
+<!--<link rel="stylesheet" href="~/Content/clients/dist/css/adminlte.min.css">
+<script src="~/Content/clients/plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="~/Content/clients/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- Select2 -->
+<!--<script src="~/Content/clients/plugins/select2/js/select2.full.min.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>-->
+
 <style>
     .glImage {
         list-style: none;
@@ -33,12 +64,10 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Ảnh sản phẩm</h3>
-
             <div class="card-tools">
                 <button type="button" class="btn btn-danger" title="Collapse">
                     Xóa hết
                 </button>
-
                 <input type="button" value="Tải ảnh" class="btn btn-success" onclick="BrowseServer('txtImage');" />
             </div>
         </div>
@@ -51,7 +80,7 @@
                         <li id="trow_@item.Id">
                             <img src="@item.Image" width="200" />
                             <div class="box-btn">
-                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>
+                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDeleteImg"><i class="fa fa-trash"></i></a>
                                 @if (item.IsDefault)
                                 {
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-success btnDefault"><i class="fa fa-check"></i></a>
@@ -100,12 +129,12 @@
         });
     }
     $(document).ready(function () {
-        $('body').on('click', '.btnDelete', function () {
+        $('body').on('click', '.btnDeleteImg', function () {
             var id = $(this).data('id');
-            var conf = confirm('Bạn có muốn xóa ảnh này không?');
+            var conf = confirm('ban có muốn xóa ảnh này không?');
             if (conf === true) {
                 $.ajax({
-                    url: '/Admin/ProductsImage/Delete',
+                    url: '/admin/productimage/delete',
                     type: 'POST',
                     data: { id: id },
                     success: function (rs) {
