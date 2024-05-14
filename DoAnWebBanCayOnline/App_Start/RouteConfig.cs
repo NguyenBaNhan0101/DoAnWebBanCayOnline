@@ -16,7 +16,7 @@ namespace DoAnWebBanCayOnline
             name: "Contact",
             url: "lien-he",
             defaults: new { controller = "Contact", action = "Index", alias = UrlParameter.Optional },
-            namespaces: new[] { "WebBanHangOnline.Controllers" }
+            namespaces: new[] { "DoAnWebBanCayOnline.Controllers" }
          );
              routes.MapRoute(
              name: "CheckOut",

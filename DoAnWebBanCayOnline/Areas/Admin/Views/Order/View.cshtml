@@ -73,7 +73,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Trạng thái</label>
-                        <p class="form-control">@(Model.Status == 1 ? "Chưa thanh toán" : Model.Status == 2 ? "Đã thanh toán" : Model.Status == 3 ? "Hoàn thành" : "Hủy" )</p>
+                        <p class="form-control">@(Model.Status == 1 ? "Chưa thanh toán" : Model.Status == 2 ? "Đã thanh toán" : Model.Status == 3 ? "Hoàn thành" : Model.Status == 4 ? "Hủy" : "Hủy và hoàn tiền" )</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -91,7 +91,10 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <a href="#" class="btn btn-success btnCapNhat" data-id="@Model.Id">Cập nhật</a>
+            @if (Model.Status != 4 && Model.Status != 5)
+            {
+                <a href="#" class="btn btn-success btnCapNhat" data-id="@Model.Id">Cập nhật</a>
+            }
             <a href="/admin/order" class="btn btn-danger">Quay lại</a>
         </div>
         <!-- /.card-footer-->
@@ -123,6 +126,9 @@
                         </option>
                         <option value="4">
                             Hủy
+                        </option>
+                        <option value="5">
+                            Hủy và hoàn tiền
                         </option>
                     </select>
                 </div>

@@ -97,11 +97,18 @@
                                     {
                                         <span>Hủy</span>
                                     }
+                                    @if (item.Status == 5)
+                                    {
+                                        <span>Hủy và hoàn tiền</span>
+                                    }
                                 </td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
                                     <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    <a href="#" class="btn btn-sm btn-danger btnCapNhat" data-id="@item.Id">Cập nhật</a>
+                                    @if (item.Status != 4 && item.Status != 5)
+                                    {
+                                        <a href="#" class="btn btn-sm btn-danger btnCapNhat" data-id="@item.Id">Cập nhật</a>
+                                    }
                                 </td>
                             </tr>
                             i++;
@@ -150,6 +157,9 @@
                         </option>
                         <option value="4">
                             Hủy
+                        </option>
+                        <option value="5">
+                            Hủy và hoàn tiền
                         </option>
                     </select>
                 </div>

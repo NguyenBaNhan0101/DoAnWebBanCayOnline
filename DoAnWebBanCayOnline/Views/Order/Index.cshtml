@@ -41,13 +41,14 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    
                                     <th>Mã đơn hàng</th>
                                     <th>Tên Khách hàng</th>
                                     <th>Phone</th>
                                     <th>Tiền</th>
                                     <th>Phương thức thanh toán</th>
                                     <th>Trạng thái</th>
+                                    <th>Số lượng</th>
                                     <th>Ngày tạo</th>
                                     <th></th>
                                 </tr>
@@ -81,6 +82,10 @@
                                             @if (@item.Status == 4)
                                             {
                                                 <td>Đã hủy</td>
+                                            }
+                                            @if (@item.Status == 5)
+                                            {
+                                                <td>Đã hủy và hoàn tiền thành công</td>
                                             }
                                             <td>
                                                 @item.Status

@@ -265,6 +265,17 @@ namespace DoAnWebBanCayOnline.Controllers
                 Session["Cart"] = cart;
                 code = new { Success = true, msg = "Thêm sản phẩm vào giở hàng thành công!", code = 1, Count = cart.Items.Count };
             }
+            //else
+            //{
+            //    if (quantity < 0)
+            //    {
+            //        code = new { Success = false, msg = "Số lượng không được âm!", code = -2 };
+            //    }
+            //    else if (quantity > checkProduct.Quantity)
+            //    {
+            //        code = new { Success = false, msg = "Số lượng vượt quá sản phẩm còn hàng!", code = -3 };
+            //    }
+            //}
             return Json(code);
         }
 
